@@ -1,0 +1,15 @@
+D:\Repository\Project 01\bin\Debug\Project 01.exe.config
+D:\Repository\Project 01\bin\Debug\Project 01.exe
+D:\Repository\Project 01\bin\Debug\Project 01.pdb
+D:\Repository\Project 01\obj\Debug\Project 01.csproj.AssemblyReference.cache
+D:\Repository\Project 01\obj\Debug\MainWindow.g.cs
+D:\Repository\Project 01\obj\Debug\App.g.cs
+D:\Repository\Project 01\obj\Debug\Project 01_MarkupCompile.cache
+D:\Repository\Project 01\obj\Debug\Project 01_MarkupCompile.lref
+D:\Repository\Project 01\obj\Debug\MainWindow.baml
+D:\Repository\Project 01\obj\Debug\Project 01.g.resources
+D:\Repository\Project 01\obj\Debug\Project_01.Properties.Resources.resources
+D:\Repository\Project 01\obj\Debug\Project 01.csproj.GenerateResource.cache
+D:\Repository\Project 01\obj\Debug\Project 01.csproj.CoreCompileInputs.cache
+D:\Repository\Project 01\obj\Debug\Project 01.exe
+D:\Repository\Project 01\obj\Debug\Project 01.pdb
