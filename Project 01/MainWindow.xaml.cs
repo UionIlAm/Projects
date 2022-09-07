@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Text.RegularExpressions;
 using System.Windows;
 
 namespace Project_01
@@ -11,7 +12,9 @@ namespace Project_01
     {
         private static int leftBracketCount = 0;
 
-        private static string[] operations = new string[] { "+", "-", "*", "/"};
+        private static string[] operations = new string[] { " + ", " - ", " * ", " / "};
+
+        private static string formatOfNum = "decimal";
 
         //private static string log = null;
 
@@ -26,33 +29,46 @@ namespace Project_01
             {
                 Result.Text = null;
             }
+            if (BtnBinaryCode.Content.Equals("decimal"))
+            {
+                BtnBinaryCode.Content = "binary";
+            }
         }
 
         private void CheckOpeation(string simvol)
         {
-            
-            // Result.Text = Result.Text.Remove(Result.Text.Length - 1);
-
-            for (int i = 0; i < operations.Length; i++)
+            try
             {
-                if (Result.Text.Substring(Result.Text.Length - 2) == operations[i])
-                {
-                    if (Result.Text.Substring(Result.Text.Length - 2) != simvol)
-                    {
-                        Result.Text = Result.Text.Remove(Result.Text.Length - 2);
-                        Result.Text += " " + simvol + " ";
+                //Result.Text += " " + simvol + " ";
+                // Result.Text = Result.Text.Remove(Result.Text.Length - 1);
 
-                        break;
-                    }
-                    else if (Result.Text.Substring(Result.Text.Length - 2) == simvol)
-                    {
-                        break;
-                    }
-                }
-                if (i == operations.Length - 1)
+                for (int i = 0; i < operations.Length; i++)
                 {
-                    Result.Text += " " + simvol + " ";
+                    if (Result.Text.Substring(Result.Text.Length - 3) == operations[i])
+                    {
+                        if (Result.Text.Substring(Result.Text.Length - 3) != simvol)
+                        {
+                            Result.Text = Result.Text.Remove(Result.Text.Length - 3);
+                            Result.Text += simvol;
+
+                            break;
+                        }
+                        else if (Result.Text.Substring(Result.Text.Length - 3) == simvol)
+                        {
+                            //Result.Text += simvol;
+
+                            break;
+                        }
+                    }
+                    if (i == operations.Length - 1)
+                    {
+                        Result.Text += simvol;
+                    }
                 }
+            }
+            catch 
+            {
+                Result.Text += simvol;
             }
         }
 
@@ -158,30 +174,44 @@ namespace Project_01
                 }
             }
 
+            BtnBinaryCode.Content = "binary";
+
             Log.Text = "";
         }
 
         private void BtnPlus_Click(object sender, RoutedEventArgs e)
         {
-            CheckOpeation("+");
+            CheckOutForNumbers();
+
+            CheckOpeation(" + ");
+
             Log.Text = "";
         }
 
         private void BtnMinus_Click(object sender, RoutedEventArgs e)
         {
-            CheckOpeation("-");
+            CheckOutForNumbers();
+
+            CheckOpeation(" - ");
+
             Log.Text = "";
         }
 
         private void BtnMultiply_Click(object sender, RoutedEventArgs e)
         {
-            CheckOpeation("*");
+            CheckOutForNumbers();
+
+            CheckOpeation(" * ");
+
             Log.Text = "";
         }
 
         private void BtnDivide_Click(object sender, RoutedEventArgs e)
         {
-            CheckOpeation("/");
+            CheckOutForNumbers();
+
+            CheckOpeation(" / ");
+
             Log.Text = "";
         }
 
@@ -386,6 +416,7 @@ namespace Project_01
 
         private void BtnWipeAll_Click(object sender, RoutedEventArgs e)
         {
+            BtnBinaryCode.Content = "binary";
             Result.Text = "0";
             Log.Text = "";
         }
@@ -404,28 +435,61 @@ namespace Project_01
             }
         }
 
+
         private void BtnBinaryCode_Click(object sender, RoutedEventArgs e)
         {
+            Regex binary = new Regex("^[01]{1,32}$", RegexOptions.Compiled);
+
+            string requestNum = "";
+
             try
             {
-                string binaryCode = GetFuncNum();
-
-                if (Log.Text.Substring(Log.Text.Length - 1) == "=")
+                if (Result.Text != "Ошибка")
                 {
-                    Log.Text += $" {binaryCode}(двоичная)";
-                }
-                else
-                {
-                    Log.Text += $" = {binaryCode}(двоичная)";
-                }
-                
+                    requestNum = GetFuncNum();
 
-                Result.Text += $"{Convert.ToString(int.Parse(binaryCode), 2)}";
+
+                    if (binary.IsMatch(requestNum))
+                    {
+                        Result.Text += $"{Convert.ToInt32(requestNum, 2)}";
+                        BtnBinaryCode.Content = "binary";
+                        formatOfNum = "to decimal";
+                    }
+                    else
+                    {
+                        Result.Text += $"{Convert.ToString(int.Parse(requestNum), 2)}";
+                        BtnBinaryCode.Content = "decimal";
+                        formatOfNum = "to binary";
+                    }
+
+                    try
+                    {
+                        if (Log.Text.Substring(Log.Text.Length - 1) == "=")
+                        {
+                            Log.Text += $" {requestNum}({formatOfNum}) =";
+                        }
+                        else
+                        {
+                            Log.Text += $" = {requestNum}({formatOfNum})";
+                        }
+                    }
+                    catch
+                    {
+                    }
+
+                    if (Log.Text == "")
+                    {
+                        Log.Text += $"{requestNum}({formatOfNum}) =";
+                    }
+                }
             }
             catch
             {
-                Log.Text += $" --> Ошибка";
-                Result.Text = "Ошибка";
+                if (Result.Text != "Ошибка" || Result.Text != "")
+                {
+                    Log.Text += $"--->{requestNum}({formatOfNum}) --> Ошибка";
+                    Result.Text = "Ошибка";
+                }
             }
         }
     }
