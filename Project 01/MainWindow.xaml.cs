@@ -23,25 +23,34 @@ namespace Project_01
             InitializeComponent();
         }
 
-        private void CheckOutForNumbers()
+        private void GlobalCheckOut()
         {
-            if (Result.Text == "0" || Result.Text == "Ошибка")
+            //Проверка для правильности отображения ввода.
+
+            if (Result.Text == "0" || Result.Text == "Неверный ввод")
             {
                 Result.Text = null;
             }
             if (BtnBinaryCode.Content.Equals("decimal"))
             {
-                BtnBinaryCode.Content = "binary";
+                BtnBinaryCode.Content = "Binary";
             }
+        }
+
+        private void DefaultExpressionModule()
+        {
+            //Возвращает модуль выражений в исходное состояние.
+
+            UsingOperands();
+            ClearOperandFields();
+            DisableOperandFields();
         }
 
         private void CheckOpeation(string simvol)
         {
+            //Проверка для правильности отображения ввода мат. знаков.
             try
             {
-                //Result.Text += " " + simvol + " ";
-                // Result.Text = Result.Text.Remove(Result.Text.Length - 1);
-
                 for (int i = 0; i < operations.Length; i++)
                 {
                     if (Result.Text.Substring(Result.Text.Length - 3) == operations[i])
@@ -55,8 +64,6 @@ namespace Project_01
                         }
                         else if (Result.Text.Substring(Result.Text.Length - 3) == simvol)
                         {
-                            //Result.Text += simvol;
-
                             break;
                         }
                     }
@@ -66,7 +73,7 @@ namespace Project_01
                     }
                 }
             }
-            catch 
+            catch
             {
                 Result.Text += simvol;
             }
@@ -74,7 +81,9 @@ namespace Project_01
 
         private void Btn1_Click(object sender, RoutedEventArgs e)
         {
-            CheckOutForNumbers();
+            GlobalCheckOut();
+
+            DefaultExpressionModule();
 
             Result.Text += "1";
             Log.Text = "";
@@ -82,7 +91,9 @@ namespace Project_01
 
         private void Btn2_Click(object sender, RoutedEventArgs e)
         {
-            CheckOutForNumbers();
+            GlobalCheckOut();
+
+            DefaultExpressionModule();
 
             Result.Text += "2";
             Log.Text = "";
@@ -90,7 +101,9 @@ namespace Project_01
 
         private void Btn3_Click(object sender, RoutedEventArgs e)
         {
-            CheckOutForNumbers();
+            GlobalCheckOut();
+
+            DefaultExpressionModule();
 
             Result.Text += "3";
             Log.Text = "";
@@ -98,7 +111,9 @@ namespace Project_01
 
         private void Btn4_Click(object sender, RoutedEventArgs e)
         {
-            CheckOutForNumbers();
+            GlobalCheckOut();
+
+            DefaultExpressionModule();
 
             Result.Text += "4";
             Log.Text = "";
@@ -106,7 +121,9 @@ namespace Project_01
 
         private void Btn5_Click(object sender, RoutedEventArgs e)
         {
-            CheckOutForNumbers();
+            GlobalCheckOut();
+
+            DefaultExpressionModule();
 
             Result.Text += "5";
             Log.Text = "";
@@ -114,7 +131,9 @@ namespace Project_01
 
         private void Btn6_Click(object sender, RoutedEventArgs e)
         {
-            CheckOutForNumbers();
+            GlobalCheckOut();
+
+            DefaultExpressionModule();
 
             Result.Text += "6";
             Log.Text = "";
@@ -122,7 +141,9 @@ namespace Project_01
 
         private void Btn7_Click(object sender, RoutedEventArgs e)
         {
-            CheckOutForNumbers();
+            GlobalCheckOut();
+
+            DefaultExpressionModule();
 
             Result.Text += "7";
             Log.Text = "";
@@ -130,7 +151,9 @@ namespace Project_01
 
         private void Btn8_Click(object sender, RoutedEventArgs e)
         {
-            CheckOutForNumbers();
+            GlobalCheckOut();
+
+            DefaultExpressionModule();
 
             Result.Text += "8";
             Log.Text = "";
@@ -138,7 +161,9 @@ namespace Project_01
 
         private void Btn9_Click(object sender, RoutedEventArgs e)
         {
-            CheckOutForNumbers();
+            GlobalCheckOut();
+
+            DefaultExpressionModule();
 
             Result.Text += "9";
             Log.Text = "";
@@ -146,6 +171,8 @@ namespace Project_01
 
         private void BtnPoint_Click(object sender, RoutedEventArgs e)
         {
+            DefaultExpressionModule();
+
             if (Result.Text.Substring(Result.Text.Length - 1) != ",")
             {
                 Result.Text += ",";
@@ -156,7 +183,9 @@ namespace Project_01
 
         private void Btn0_Click(object sender, RoutedEventArgs e)
         {
-            CheckOutForNumbers();
+            GlobalCheckOut();
+
+            DefaultExpressionModule();
 
             Result.Text += "0";
             Log.Text = "";
@@ -174,14 +203,16 @@ namespace Project_01
                 }
             }
 
-            BtnBinaryCode.Content = "binary";
+            BtnBinaryCode.Content = "Binary";
 
             Log.Text = "";
         }
 
         private void BtnPlus_Click(object sender, RoutedEventArgs e)
         {
-            CheckOutForNumbers();
+            GlobalCheckOut();
+
+            DefaultExpressionModule();
 
             CheckOpeation(" + ");
 
@@ -190,7 +221,9 @@ namespace Project_01
 
         private void BtnMinus_Click(object sender, RoutedEventArgs e)
         {
-            CheckOutForNumbers();
+            GlobalCheckOut();
+
+            DefaultExpressionModule();
 
             CheckOpeation(" - ");
 
@@ -199,7 +232,9 @@ namespace Project_01
 
         private void BtnMultiply_Click(object sender, RoutedEventArgs e)
         {
-            CheckOutForNumbers();
+            GlobalCheckOut();
+
+            DefaultExpressionModule();
 
             CheckOpeation(" * ");
 
@@ -208,7 +243,9 @@ namespace Project_01
 
         private void BtnDivide_Click(object sender, RoutedEventArgs e)
         {
-            CheckOutForNumbers();
+            GlobalCheckOut();
+
+            DefaultExpressionModule();
 
             CheckOpeation(" / ");
 
@@ -217,11 +254,15 @@ namespace Project_01
 
         private void BtnBracketL_Click(object sender, RoutedEventArgs e)
         {
-            CheckOutForNumbers();
+            GlobalCheckOut();
+
+            DefaultExpressionModule();
 
             leftBracketCount++;
 
-            Result.Text += " ( ";
+            InsertExpression("( ");
+
+            //Result.Text += "( ";
 
             Log.Text = "";
         }
@@ -230,7 +271,7 @@ namespace Project_01
         {
             if (leftBracketCount != 0)
             {
-                Result.Text += " ) ";
+                Result.Text += " )";
                 leftBracketCount--;
 
                 Log.Text = "";
@@ -241,6 +282,8 @@ namespace Project_01
         {
             try
             {
+                DefaultExpressionModule();
+
                 Log.Text = "";
 
                 string rootNum = GetFuncNum();
@@ -249,16 +292,19 @@ namespace Project_01
             }
             catch
             {
-                Result.Text = "Ошибка";
+                Result.Text = "Неверный ввод";
             }
         }
 
         private string GetFuncNum()
         {
+            //Метод получение последнего введённого числа.
             string num = null;
 
             try
             {
+                DefaultExpressionModule();
+
                 string res = null;
 
                 for (int i = Result.Text.Length - 1; i >= 0; i--)
@@ -280,7 +326,7 @@ namespace Project_01
             }
             catch
             {
-                Result.Text = "Ошибка";
+                Result.Text = "Неверный ввод";
             }
 
             return num;
@@ -290,6 +336,8 @@ namespace Project_01
         {
             try
             {
+                DefaultExpressionModule();
+
                 Log.Text = "";
 
                 string cosNum = GetFuncNum();
@@ -298,7 +346,7 @@ namespace Project_01
             }
             catch
             {
-                Result.Text = "Ошибка";
+                Result.Text = "Неверный ввод";
             }
         }
 
@@ -306,6 +354,8 @@ namespace Project_01
         {
             try
             {
+                DefaultExpressionModule();
+
                 Log.Text = "";
 
                 string sinNum = GetFuncNum();
@@ -314,7 +364,7 @@ namespace Project_01
             }
             catch
             {
-                Result.Text = "Ошибка";
+                Result.Text = "Неверный ввод";
             }
         }
 
@@ -322,6 +372,8 @@ namespace Project_01
         {
             try
             {
+                DefaultExpressionModule();
+
                 Log.Text = "";
 
                 string gtNum = GetFuncNum();
@@ -330,7 +382,7 @@ namespace Project_01
             }
             catch
             {
-                Result.Text = "Ошибка";
+                Result.Text = "Неверный ввод";
             }
         }
 
@@ -338,6 +390,8 @@ namespace Project_01
         {
             try
             {
+                DefaultExpressionModule();
+
                 Log.Text = "";
 
                 string cgtNum = GetFuncNum();
@@ -346,7 +400,7 @@ namespace Project_01
             }
             catch
             {
-                Result.Text = "Ошибка";
+                Result.Text = "Неверный ввод";
             }
         }
 
@@ -354,6 +408,8 @@ namespace Project_01
         {
             try
             {
+                DefaultExpressionModule();
+
                 Log.Text = "";
 
                 string arcsinNum = GetFuncNum();
@@ -362,7 +418,7 @@ namespace Project_01
             }
             catch
             {
-                Result.Text = "Ошибка";
+                Result.Text = "Неверный ввод";
             }
         }
 
@@ -370,6 +426,8 @@ namespace Project_01
         {
             try
             {
+                DefaultExpressionModule();
+
                 Log.Text = "";
 
                 string arccosNum = GetFuncNum();
@@ -378,7 +436,7 @@ namespace Project_01
             }
             catch
             {
-                Result.Text = "Ошибка";
+                Result.Text = "Неверный ввод";
             }
         }
 
@@ -386,6 +444,8 @@ namespace Project_01
         {
             try
             {
+                DefaultExpressionModule();
+
                 Log.Text = "";
 
                 string arctgNum = GetFuncNum();
@@ -394,7 +454,7 @@ namespace Project_01
             }
             catch
             {
-                Result.Text = "Ошибка";
+                Result.Text = "Неверный ввод";
             }
         }
 
@@ -402,6 +462,8 @@ namespace Project_01
         {
             try
             {
+                DefaultExpressionModule();
+
                 Log.Text = "";
 
                 string arcctgNum = GetFuncNum();
@@ -410,13 +472,13 @@ namespace Project_01
             }
             catch
             {
-                Result.Text = "Ошибка";
+                Result.Text = "Неверный ввод";
             }
         }
 
         private void BtnWipeAll_Click(object sender, RoutedEventArgs e)
         {
-            BtnBinaryCode.Content = "binary";
+            BtnBinaryCode.Content = "Binary";
             Result.Text = "0";
             Log.Text = "";
         }
@@ -425,26 +487,29 @@ namespace Project_01
         {
             try
             {
-                Log.Text = Result.Text + " =";
+                DefaultExpressionModule();
 
+                Log.Text = Result.Text + " =";
                 Result.Text = new DataTable().Compute(Result.Text.Replace(',', '.'), null).ToString();
             }
             catch
             {
-                Result.Text = "Ошибка";
+                Result.Text = "Неверный ввод";
             }
         }
 
 
         private void BtnBinaryCode_Click(object sender, RoutedEventArgs e)
         {
-            Regex binary = new Regex("^[01]{1,32}$", RegexOptions.Compiled);
-
             string requestNum = "";
 
             try
             {
-                if (Result.Text != "Ошибка")
+                DefaultExpressionModule();
+
+                Regex binary = new Regex("^[01]{1,32}$", RegexOptions.Compiled);
+
+                if (Result.Text != "Неверный ввод")
                 {
                     requestNum = GetFuncNum();
 
@@ -452,13 +517,13 @@ namespace Project_01
                     if (binary.IsMatch(requestNum))
                     {
                         Result.Text += $"{Convert.ToInt32(requestNum, 2)}";
-                        BtnBinaryCode.Content = "binary";
+                        BtnBinaryCode.Content = "Binary";
                         formatOfNum = "to decimal";
                     }
                     else
                     {
                         Result.Text += $"{Convert.ToString(int.Parse(requestNum), 2)}";
-                        BtnBinaryCode.Content = "decimal";
+                        BtnBinaryCode.Content = "Decimal";
                         formatOfNum = "to binary";
                     }
 
@@ -485,11 +550,225 @@ namespace Project_01
             }
             catch
             {
-                if (Result.Text != "Ошибка" || Result.Text != "")
+                if (Result.Text != "Неверный ввод" || Result.Text != "")
                 {
-                    Log.Text += $"--->{requestNum}({formatOfNum}) --> Ошибка";
-                    Result.Text = "Ошибка";
+                    Log.Text += $"--->{requestNum}({formatOfNum}) --> Неверный ввод";
+                    Result.Text = "Неверный ввод";
                 }
+            }
+        }
+
+        private void InsertExpression(string expression)
+        {
+            //Осуществляет корректную вставку сложных выражений.
+
+            try
+            {
+                for (int i = 0; i < operations.Length; i++)
+                {
+                    if (Result.Text.Length != 0)
+                    {
+                        if (Result.Text.Length >= 2)
+                        {
+                            if (Result.Text.Substring(Result.Text.Length - 3) == operations[i])
+                            {
+                                Result.Text += $"{expression}";
+                                break;
+                            }
+                            else if(i == operations.Length - 1)
+                            {
+                                Result.Text += $" * {expression}";
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            Result.Text += $" * {expression}";
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        Result.Text += $"{expression}";
+                        break;
+                    }
+                }
+            }
+            catch
+            {
+                Result.Text = "Неверный ввод";
+            }
+        }
+
+        private void ClearOperandFields()
+        {
+            FirstOperand.Text = "";
+            SecondOperand.Text = "";
+        }
+
+        private void UsingOperands()
+        {
+            //Проверяет используются ли поля операндов, если да - обнуляет их.
+
+            if (FirstOperand.IsEnabled == true)
+            {
+                BtnDegree.Content = "степень";
+                BtnLogSecondOper.Content = "log 2nd";
+                BtnLog.Content = "log";
+
+                LblFirstOperand.Content = "1й операнд";
+                LblSecondOperand.Content = "2й операнд";
+            }
+        }
+
+        private void DisableOperandFields()
+        {
+            FirstOperand.IsEnabled = false;
+            SecondOperand.IsEnabled = false;
+        }
+
+        private void BtnDegree_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (!BtnDegree.Content.Equals("вставить"))
+                {
+                    UsingOperands();
+                }
+
+                if (BtnDegree.Content.Equals("вставить"))
+                {
+                    if (FirstOperand.Text != "" && SecondOperand.Text != "")
+                    {
+                        GlobalCheckOut();
+
+                        CheckOperandFraction();
+
+                        InsertExpression(Math.Pow(double.Parse(FirstOperand.Text), double.Parse(SecondOperand.Text)).ToString());
+                    }
+
+                    BtnDegree.Content = "степень";
+
+                    DefaultExpressionModule();
+                }
+                else
+                {
+                    BtnDegree.Content = "вставить";
+
+                    LblFirstOperand.Content = "число";
+                    LblSecondOperand.Content = "степень";
+
+                    FirstOperand.IsEnabled = true;
+                    SecondOperand.IsEnabled = true;
+                }
+
+                ClearOperandFields();
+            }
+            catch
+            {
+                Result.Text = "Неверный ввод";
+            }
+        }
+
+        private void BtnLn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                InsertExpression(Math.Log(double.Parse(GetFuncNum())).ToString());
+            }
+            catch
+            {
+                Result.Text = "Неверный ввод";
+            }
+        }
+
+        private void BtnLog_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                InsertExpression(Math.Log10(double.Parse(GetFuncNum())).ToString());
+            }
+            catch
+            {
+                Result.Text = "Неверный ввод";
+            }
+        }
+
+        private void CheckOperandFraction()
+        {
+            FirstOperand.Text = new DataTable().Compute(FirstOperand.Text.Replace(',', '.'), null).ToString();
+
+            SecondOperand.Text = new DataTable().Compute(SecondOperand.Text.Replace(',', '.'), null).ToString();
+        }
+
+        private void BtnLogSecondOper_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (!BtnLogSecondOper.Content.Equals("вставить"))
+                {
+                    UsingOperands();
+                }
+
+                if (BtnLogSecondOper.Content.Equals("вставить"))
+                {
+                    if (FirstOperand.Text != "" && SecondOperand.Text != "")
+                    {
+                        GlobalCheckOut();
+
+                        CheckOperandFraction();
+
+                        InsertExpression(Math.Log(double.Parse(FirstOperand.Text), double.Parse(SecondOperand.Text)).ToString());
+                    }
+
+                    BtnLogSecondOper.Content = "log 2nd";
+
+                    DefaultExpressionModule();
+                }
+                else
+                {
+                    BtnLogSecondOper.Content = "вставить";
+
+                    LblFirstOperand.Content = "число";
+                    LblSecondOperand.Content = "основание";
+
+                    FirstOperand.IsEnabled = true;
+                    SecondOperand.IsEnabled = true;
+                }
+
+                ClearOperandFields();
+            }
+            catch
+            {
+                Result.Text = "Неверный ввод";
+            }
+        }
+
+        private void FirstOperand_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            try
+            {
+                if (!Char.IsDigit(FirstOperand.Text[FirstOperand.Text.Length - 1]) || !Char.IsDigit(FirstOperand.Text[0]))
+                {
+                    FirstOperand.Text = FirstOperand.Text.Remove(FirstOperand.Text.Length - 1);
+                }
+            }
+            catch
+            {
+            }
+        }
+
+        private void SecondOperand_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            try
+            {
+                if (!Char.IsDigit(SecondOperand.Text[FirstOperand.Text.Length - 1]) || !Char.IsDigit(SecondOperand.Text[0]))
+                {
+                    SecondOperand.Text = SecondOperand.Text.Remove(SecondOperand.Text.Length - 1);
+                }
+            }
+            catch
+            {
             }
         }
     }
