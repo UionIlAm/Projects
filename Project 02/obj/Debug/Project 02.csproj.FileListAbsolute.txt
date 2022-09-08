@@ -1,0 +1,20 @@
+D:\Repository\Project 02\bin\Debug\Project 02.exe.config
+D:\Repository\Project 02\bin\Debug\Project 02.exe
+D:\Repository\Project 02\bin\Debug\Project 02.pdb
+D:\Repository\Project 02\obj\Debug\Project 02.csproj.AssemblyReference.cache
+D:\Repository\Project 02\obj\Debug\MainWindow.g.cs
+D:\Repository\Project 02\obj\Debug\App.g.cs
+D:\Repository\Project 02\obj\Debug\Project 02_MarkupCompile.cache
+D:\Repository\Project 02\obj\Debug\Project 02_MarkupCompile.lref
+D:\Repository\Project 02\obj\Debug\MainWindow.baml
+D:\Repository\Project 02\obj\Debug\Project 02.g.resources
+D:\Repository\Project 02\obj\Debug\Project_02.Properties.Resources.resources
+D:\Repository\Project 02\obj\Debug\Project 02.csproj.GenerateResource.cache
+D:\Repository\Project 02\obj\Debug\Project 02.csproj.CoreCompileInputs.cache
+D:\Repository\Project 02\obj\Debug\Project 02.exe
+D:\Repository\Project 02\obj\Debug\Project 02.pdb
+D:\Repository\Project 02\obj\Debug\SummaryWindow.g.cs
+D:\Repository\Project 02\obj\Debug\App.baml
+D:\Repository\Project 02\obj\Debug\SummaryWindow.baml
+D:\Repository\Project 02\obj\Debug\VacancyWindow.g.cs
+D:\Repository\Project 02\obj\Debug\VacancyWindow.baml

@@ -1,0 +1,74 @@
+﻿<Window x:Class="Project_02.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_02"
+        mc:Ignorable="d"
+        Title="Кадровое агенство" Height="591.632" Width="834.106" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+ 
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="37*" />
+            <RowDefinition Height="76*" />
+            <RowDefinition Height="56*" />
+            <RowDefinition Height="56*" />
+            <RowDefinition Height="57*" />
+            <RowDefinition Height="36*" />
+            <RowDefinition Height="76*" />
+            <RowDefinition Height="56*" />
+            <RowDefinition Height="56*" />
+            <RowDefinition Height="30*" />
+        </Grid.RowDefinitions>
+
+        <Label
+            Grid.Column="0"
+            Grid.Row="0"
+            Grid.ColumnSpan="7"
+            Content="Вакансии"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            FontSize="22"
+        />
+
+        <Label
+            Grid.Column="0"
+            Grid.Row="5"
+            Grid.ColumnSpan="7"
+            Content="Резюме"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            FontSize="22"
+        />
+
+        <ListView x:Name="LvVacancies" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="6" Grid.RowSpan="3" Margin="2" Style="{DynamicResource MyCoolListView}">
+
+        </ListView>
+
+        <Button x:Name="AddVacancy" Content="Добавить вакансию" Grid.Column="0" Grid.Row="1" Margin="2" Style="{DynamicResource MyCoolButton}" Click="AddVacancy_Click"/>
+        <Button x:Name="Respond" Content="Откликнуться" Grid.Column="0" Grid.Row="2" Margin="2" Style="{DynamicResource MyCoolButton}" Click="Respond_Click"/>
+        <Button x:Name="DelVacancy" Content="Удалить вакансию" Grid.Column="0" Grid.Row="3" Margin="2" Style="{DynamicResource MyCoolButton}" Click="DelVacancy_Click"/>
+
+        <ListView x:Name="LvSummary" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="6" Grid.RowSpan="3" Margin="2" Style="{DynamicResource MyCoolListView}">
+
+        </ListView>
+
+        <Button x:Name="AddSummary" Content="Добавить резюме" Grid.Column="0" Grid.Row="6" Margin="2" Style="{DynamicResource MyCoolButton}" Click="AddSummary_Click"/>
+        <Button x:Name="Recruit" Content="Принять на работу" Grid.Column="0" Grid.Row="7" Margin="2" Style="{DynamicResource MyCoolButton}" Click="Recruit_Click"/>
+        <Button x:Name="DelSummary" Content="Удалить резюме" Grid.Column="0" Grid.Row="8" Margin="2" Style="{DynamicResource MyCoolButton}" Click="DelSummary_Click"/>
+
+
+    </Grid>
+</Window>
