@@ -1,0 +1,198 @@
+﻿<Window x:Class="Project_01.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_01"
+        mc:Ignorable="d"
+        Title="Инженерный калькулятор" Height="634.9" Width="803.2" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="MyCoolButton" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="7" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock 
+            x:Name="Log" 
+            Grid.Column="2"
+            Grid.Row="1"
+            Grid.ColumnSpan="8"
+            Text=""
+            TextAlignment="Right"
+            VerticalAlignment="Center"
+            Margin="5" FontSize="16" TextTrimming="CharacterEllipsis" TextWrapping="Wrap"
+        />
+
+        <TextBlock 
+            x:Name="Result" 
+            Grid.Column="0"
+            Grid.Row="2"
+            Grid.ColumnSpan="8"
+            Text="0"
+            TextAlignment="Right"
+            VerticalAlignment="Center"
+            Margin="5" FontSize="30" TextTrimming="CharacterEllipsis" TextWrapping="Wrap"
+        />
+
+        <Label
+            x:Name="LblFirstOperand"
+            Grid.Column="0"
+            Grid.Row="0"
+            Grid.ColumnSpan="1"
+            Content="1й операнд"
+            HorizontalContentAlignment="Center"
+            VerticalAlignment="Center"
+            Margin="5,5,5,-15" FontSize="16"
+        />
+
+        <Label
+            x:Name="LblSecondOperand"
+            Grid.Column="1"
+            Grid.Row="0"
+            Grid.ColumnSpan="1"
+            Content="2й операнд"
+            HorizontalContentAlignment="Center"
+            VerticalAlignment="Center"
+            Margin="5,5,5,-15" FontSize="16"
+        />
+        
+        <TextBox
+            x:Name="FirstOperand" 
+            Grid.Column="0"
+            Grid.Row="1"
+            Grid.ColumnSpan="1"
+            TextAlignment="Center"
+            VerticalAlignment="Center"
+            Margin="5" FontSize="22" IsEnabled="False" TextChanged="FirstOperand_TextChanged"
+        />
+
+        <TextBox
+            x:Name="SecondOperand" 
+            Grid.Column="1"
+            Grid.Row="1"
+            TextAlignment="Center"
+            VerticalAlignment="Center"
+            Margin="5" FontSize="22"  IsEnabled="False" TextChanged="SecondOperand_TextChanged"
+        />
+
+        <Button x:Name="Btn1" Grid.Column="3" Grid.Row="4" Content="1" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="Btn1_Click"/>
+        <Button x:Name="Btn2" Grid.Column="4" Grid.Row="4" Content="2" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="Btn2_Click"/>
+        <Button x:Name="Btn3" Grid.Column="5" Grid.Row="4" Content="3" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="Btn3_Click"/>
+        <Button x:Name="Btn4" Grid.Column="3" Grid.Row="5" Content="4" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="Btn4_Click"/>
+        <Button x:Name="Btn5" Grid.Column="4" Grid.Row="5" Content="5" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="Btn5_Click"/>
+        <Button x:Name="Btn6" Grid.Column="5" Grid.Row="5" Content="6" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="Btn6_Click"/>
+        <Button x:Name="Btn7" Grid.Column="3" Grid.Row="6" Content="7" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="Btn7_Click"/>
+        <Button x:Name="Btn8" Grid.Column="4" Grid.Row="6" Content="8" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="Btn8_Click"/>
+        <Button x:Name="Btn9" Grid.Column="5" Grid.Row="6" Content="9" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="Btn9_Click"/>
+        <Button x:Name="BtnPoint" Grid.Column="3" Grid.Row="7" Content="," Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnPoint_Click"/>
+        <Button x:Name="Btn0" Grid.Column="4" Grid.Row="7" Content="0" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="Btn0_Click"/>
+        <Button x:Name="BtnResult" Grid.Column="5" Grid.Row="7" Content="=" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnResult_Click"/>
+
+        <Button x:Name="BtnWipe" Grid.Column="7" Grid.Row="3" Content="⌫" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnWipe_Click"/>
+        <Button x:Name="BtnPlus" Grid.Column="7" Grid.Row="4" Content="+" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnPlus_Click"/>
+        <Button x:Name="BtnMinus" Grid.Column="7" Grid.Row="5" Content="-" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnMinus_Click"/>
+        <Button x:Name="BtnMultiply" Grid.Column="7" Grid.Row="6" Content="×" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnMultiply_Click"/>
+        <Button x:Name="BtnDivide" Grid.Column="7" Grid.Row="7" Content="÷" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnDivide_Click"/>
+
+        <Button x:Name="BtnBracketL" Grid.Column="3" Grid.Row="3" Content="(" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnBracketL_Click"/>
+        <Button x:Name="BtnBracketR" Grid.Column="4" Grid.Row="3" Content=")" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnBracketR_Click"/>
+        <Button x:Name="BtnWipeAll" Grid.Column="5" Grid.Row="3" Content="C" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnWipeAll_Click"/>
+
+        <Button x:Name="BtnRoot" Grid.Column="0" Grid.Row="6" Content="√" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnRoot_Click"/>
+        <Button x:Name="BtnCos" Grid.Column="2" Grid.Row="4" Content="cos" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnCos_Click"/>
+        <Button x:Name="BtnSin" Grid.Column="2" Grid.Row="5" Content="sin" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnSin_Click"/>
+        <Button x:Name="BtnTg" Grid.Column="2" Grid.Row="6" Content="tg" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnTg_Click"/>
+        <Button x:Name="BtnCtg" Grid.Column="2" Grid.Row="7" Content="ctg" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnCtg_Click"/>
+
+        <Button x:Name="BtnArcsin" Grid.Column="1" Grid.Row="5" Content="arcsin" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnArcsin_Click"/>
+        <Button x:Name="BtnArccos" Grid.Column="1" Grid.Row="4" Content="arccos" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnArccos_Click"/>
+        <Button x:Name="BtnArctg" Grid.Column="1" Grid.Row="6" Content="arctg" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnArctg_Click"/>
+        <Button x:Name="BtnArcCtg" Grid.Column="1" Grid.Row="7" Content="arcctg" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnArcCtg_Click"/>
+
+        <Button x:Name="BtnBinaryCode" Grid.Column="0" Grid.Row="7" Content="Binary" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnBinaryCode_Click"/>
+
+        <Button x:Name="BtnDegree" Grid.Column="0" Grid.Row="3" Content="степень" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnDegree_Click"/>
+        <Button x:Name="BtnLn" Grid.Column="0" Grid.Row="4" Content="ln" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnLn_Click"/>
+        <Button x:Name="BtnLog" Grid.Column="0" Grid.Row="5" Content="log" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnLog_Click"/>
+       
+        <Button x:Name="BtnLogSecondOper" Grid.Column="1" Grid.Row="3" Content="log 2nd" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnLogSecondOper_Click"/>
+
+        <Button x:Name="BtnRootSecondOper" Grid.Column="2" Grid.Row="3" Content="√ 2rd" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnRootSecondOper_Click"/>
+
+    </Grid>
+</Window>
