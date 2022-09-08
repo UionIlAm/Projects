@@ -27,11 +27,11 @@ namespace Project_01
         {
             //Проверка для правильности отображения ввода.
 
-            if (Result.Text == "0" || Result.Text == "Неверный ввод")
+            if (Result.Text == "0" || Result.Text == "Неверный ввод" || Result.Text == "Запятая - это зло")
             {
                 Result.Text = null;
             }
-            if (BtnBinaryCode.Content.Equals("decimal"))
+            if (BtnBinaryCode.Content.Equals("Decimal"))
             {
                 BtnBinaryCode.Content = "Binary";
             }
@@ -193,7 +193,11 @@ namespace Project_01
 
         private void BtnWipe_Click(object sender, RoutedEventArgs e)
         {
-            if (Result.Text != "0" && Result.Text != null && Result.Text != "")
+            if (Result.Text == "Неверный ввод" || Result.Text == "Запятая - это зло")
+            {
+                Result.Text = "0";
+            }
+            else if (Result.Text != "0" && Result.Text != null && Result.Text != "")
             {
                 Result.Text = Result.Text.Remove(Result.Text.Length - 1);
 
@@ -282,6 +286,8 @@ namespace Project_01
         {
             try
             {
+                GlobalCheckOut();
+
                 DefaultExpressionModule();
 
                 Log.Text = "";
@@ -304,6 +310,8 @@ namespace Project_01
             try
             {
                 DefaultExpressionModule();
+
+                GlobalCheckOut();
 
                 string res = null;
 
@@ -487,6 +495,8 @@ namespace Project_01
         {
             try
             {
+                GlobalCheckOut();
+
                 DefaultExpressionModule();
 
                 Log.Text = Result.Text + " =";
@@ -552,8 +562,8 @@ namespace Project_01
             {
                 if (Result.Text != "Неверный ввод" || Result.Text != "")
                 {
-                    Log.Text += $"--->{requestNum}({formatOfNum}) --> Неверный ввод";
-                    Result.Text = "Неверный ввод";
+                    Log.Text += $">{requestNum}({formatOfNum}) --> Неверный ввод";
+                    Result.Text = "Запятая - это зло";
                 }
             }
         }
@@ -564,6 +574,8 @@ namespace Project_01
 
             try
             {
+                GlobalCheckOut();
+
                 for (int i = 0; i < operations.Length; i++)
                 {
                     if (Result.Text.Length != 0)
@@ -613,8 +625,8 @@ namespace Project_01
             if (FirstOperand.IsEnabled == true)
             {
                 BtnDegree.Content = "степень";
+                BtnRootSecondOper.Content = "√ 2nd";
                 BtnLogSecondOper.Content = "log 2nd";
-                BtnLog.Content = "log";
 
                 LblFirstOperand.Content = "1й операнд";
                 LblSecondOperand.Content = "2й операнд";
@@ -631,6 +643,8 @@ namespace Project_01
         {
             try
             {
+                GlobalCheckOut();
+
                 if (!BtnDegree.Content.Equals("вставить"))
                 {
                     UsingOperands();
@@ -640,8 +654,6 @@ namespace Project_01
                 {
                     if (FirstOperand.Text != "" && SecondOperand.Text != "")
                     {
-                        GlobalCheckOut();
-
                         CheckOperandFraction();
 
                         InsertExpression(Math.Pow(double.Parse(FirstOperand.Text), double.Parse(SecondOperand.Text)).ToString());
@@ -705,6 +717,8 @@ namespace Project_01
         {
             try
             {
+                GlobalCheckOut();
+
                 if (!BtnLogSecondOper.Content.Equals("вставить"))
                 {
                     UsingOperands();
@@ -714,8 +728,6 @@ namespace Project_01
                 {
                     if (FirstOperand.Text != "" && SecondOperand.Text != "")
                     {
-                        GlobalCheckOut();
-
                         CheckOperandFraction();
 
                         InsertExpression(Math.Log(double.Parse(FirstOperand.Text), double.Parse(SecondOperand.Text)).ToString());
@@ -769,6 +781,51 @@ namespace Project_01
             }
             catch
             {
+            }
+        }
+
+        private void BtnRootSecondOper_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                GlobalCheckOut();
+
+                if (!BtnRootSecondOper.Content.Equals("вставить"))
+                {
+                    UsingOperands();
+                }
+
+                if (BtnRootSecondOper.Content.Equals("вставить"))
+                {
+                    if (FirstOperand.Text != "" && SecondOperand.Text != "")
+                    {
+                        CheckOperandFraction();
+
+                        //Math.Pow(value, 1d/3)
+
+                        InsertExpression(Math.Pow(double.Parse(FirstOperand.Text), 1d / double.Parse(SecondOperand.Text)).ToString());
+                    }
+
+                    BtnRootSecondOper.Content = "√ 2nd";
+
+                    DefaultExpressionModule();
+                }
+                else
+                {
+                    BtnRootSecondOper.Content = "вставить";
+
+                    LblFirstOperand.Content = "число";
+                    LblSecondOperand.Content = "индекс";
+
+                    FirstOperand.IsEnabled = true;
+                    SecondOperand.IsEnabled = true;
+                }
+
+                ClearOperandFields();
+            }
+            catch
+            {
+                Result.Text = "Неверный ввод";
             }
         }
     }

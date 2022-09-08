@@ -173,7 +173,7 @@
         <Button x:Name="BtnBracketR" Grid.Column="4" Grid.Row="3" Content=")" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnBracketR_Click"/>
         <Button x:Name="BtnWipeAll" Grid.Column="5" Grid.Row="3" Content="C" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnWipeAll_Click"/>
 
-        <Button x:Name="BtnRoot" Grid.Column="2" Grid.Row="3" Content="√" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnRoot_Click"/>
+        <Button x:Name="BtnRoot" Grid.Column="0" Grid.Row="6" Content="√" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnRoot_Click"/>
         <Button x:Name="BtnCos" Grid.Column="2" Grid.Row="4" Content="cos" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnCos_Click"/>
         <Button x:Name="BtnSin" Grid.Column="2" Grid.Row="5" Content="sin" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnSin_Click"/>
         <Button x:Name="BtnTg" Grid.Column="2" Grid.Row="6" Content="tg" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnTg_Click"/>
@@ -191,6 +191,8 @@
         <Button x:Name="BtnLog" Grid.Column="0" Grid.Row="5" Content="log" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnLog_Click"/>
        
         <Button x:Name="BtnLogSecondOper" Grid.Column="1" Grid.Row="3" Content="log 2nd" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnLogSecondOper_Click"/>
+
+        <Button x:Name="BtnRootSecondOper" Grid.Column="2" Grid.Row="3" Content="√ 2rd" Margin="2" FontSize="24" Style="{DynamicResource MyCoolButton}" Click="BtnRootSecondOper_Click"/>
 
     </Grid>
 </Window>
