@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows;
+﻿using System.Windows;
 
 
 namespace Project_02
@@ -17,7 +15,7 @@ namespace Project_02
 
         private void SaveSummary_Click(object sender, RoutedEventArgs e)
         {
-            SummaryHelper.CreateSummary(FullNameTB.Text, int.Parse(AgeTB.Text), ProfessionTB.Text, WorkExpTB.Text);
+            SummaryHelper.CreateSummary(FullNameTB.Text, AgeTB.Text, ProfessionTB.Text, WorkExpTB.Text);
             this.Close();
         }
     }

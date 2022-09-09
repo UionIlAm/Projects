@@ -6,9 +6,6 @@
         xmlns:local="clr-namespace:Project_02"
         mc:Ignorable="d"
         Title="Кадровое агенство" Height="591.632" Width="834.106" WindowStartupLocation="CenterScreen">
-    <Window.Resources>
- 
-    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -53,21 +50,35 @@
             FontSize="22"
         />
 
-        <ListView x:Name="LvVacancies" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="6" Grid.RowSpan="3" Margin="2" Style="{DynamicResource MyCoolListView}">
-
+        <ListView x:Name="LvVacancies" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="6" Grid.RowSpan="3" Margin="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Организация" Width="200" DisplayMemberBinding="{Binding Organization}"/>
+                    <GridViewColumn Header="Зарплата" Width="150" DisplayMemberBinding="{Binding Salary}"/>
+                    <GridViewColumn Header="Должность/Профессия" Width="200" DisplayMemberBinding="{Binding Profession}"/>
+                    <GridViewColumn Header="Стаж работы" Width="135" DisplayMemberBinding="{Binding WorkExperience}"/>
+                </GridView>
+            </ListView.View>
         </ListView>
 
         <Button x:Name="AddVacancy" Content="Добавить вакансию" Grid.Column="0" Grid.Row="1" Margin="2" Style="{DynamicResource MyCoolButton}" Click="AddVacancy_Click"/>
-        <Button x:Name="Respond" Content="Откликнуться" Grid.Column="0" Grid.Row="2" Margin="2" Style="{DynamicResource MyCoolButton}" Click="Respond_Click"/>
-        <Button x:Name="DelVacancy" Content="Удалить вакансию" Grid.Column="0" Grid.Row="3" Margin="2" Style="{DynamicResource MyCoolButton}" Click="DelVacancy_Click"/>
+        <Button x:Name="Respond" Content="Откликнуться" Grid.Column="0" Grid.Row="2" Margin="2" Style="{DynamicResource MyCoolButton}" Click="Respond_Click" IsEnabled="False"/>
+        <Button x:Name="DelVacancy" Content="Удалить вакансию" Grid.Column="0" Grid.Row="3" Margin="2" Style="{DynamicResource MyCoolButton}" Click="DelVacancy_Click" IsEnabled="False"/>
 
-        <ListView x:Name="LvSummary" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="6" Grid.RowSpan="3" Margin="2" Style="{DynamicResource MyCoolListView}">
-
+        <ListView x:Name="LvSummary" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="6" Grid.RowSpan="3" Margin="2" SelectionChanged="LvSummary_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ФИО" Width="200" DisplayMemberBinding="{Binding FullName}"/>
+                    <GridViewColumn Header="Возраст" Width="150" DisplayMemberBinding="{Binding Age}"/>
+                    <GridViewColumn Header="Должность/Профессия" Width="200" DisplayMemberBinding="{Binding Profession}"/>
+                    <GridViewColumn Header="Стаж работы" Width="135" DisplayMemberBinding="{Binding WorkExperience}"/>
+                </GridView>
+            </ListView.View>
         </ListView>
 
         <Button x:Name="AddSummary" Content="Добавить резюме" Grid.Column="0" Grid.Row="6" Margin="2" Style="{DynamicResource MyCoolButton}" Click="AddSummary_Click"/>
-        <Button x:Name="Recruit" Content="Принять на работу" Grid.Column="0" Grid.Row="7" Margin="2" Style="{DynamicResource MyCoolButton}" Click="Recruit_Click"/>
-        <Button x:Name="DelSummary" Content="Удалить резюме" Grid.Column="0" Grid.Row="8" Margin="2" Style="{DynamicResource MyCoolButton}" Click="DelSummary_Click"/>
+        <Button x:Name="Recruit" Content="Принять на работу" Grid.Column="0" Grid.Row="7" Margin="2" Style="{DynamicResource MyCoolButton}" Click="Recruit_Click" IsEnabled="False"/>
+        <Button x:Name="DelSummary" Content="Удалить резюме" Grid.Column="0" Grid.Row="8" Margin="2" Style="{DynamicResource MyCoolButton}" Click="DelSummary_Click" IsEnabled="False"/>
 
 
     </Grid>

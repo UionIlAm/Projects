@@ -14,7 +14,7 @@ namespace Project_02
 
         private void SaveVacancy_Click(object sender, RoutedEventArgs e)
         {
-            VacancyHelper.CreateVacancy(OrganiztionTB.Text, double.Parse(SalaryTB.Text), ProfessionTB.Text, WorkExpTB.Text);
+            VacancyHelper.CreateVacancy(OrganiztionTB.Text, SalaryTB.Text, ProfessionTB.Text, WorkExpTB.Text);
             this.Close();
         }
     }

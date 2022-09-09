@@ -1,16 +1,18 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Project_02
 {
     public class VacancyHelper
     {
         public string Organization { get; set; }
-        public double Salary { get; set; }
+        public string Salary { get; set; }
         public string Profession { get; set; }
         public string WorkExperience { get; set; }
-        public static List<VacancyHelper> Vacancy { get; private set; }
 
-        public static void CreateVacancy(string organization, double salary, string profession, string workExperience)
+        public static ObservableCollection<VacancyHelper> Vacancy = new ObservableCollection<VacancyHelper>();
+
+        public static void CreateVacancy(string organization, string salary, string profession, string workExperience)
         {
             VacancyHelper newVacancy = new VacancyHelper()
             {

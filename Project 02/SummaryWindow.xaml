@@ -84,7 +84,7 @@
             Margin="5, -3, 5, 5"
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
-            FontSize="12"
+            FontSize="18"
             TextAlignment="Center" Style="{DynamicResource MyCoolTextBox}"
         />
 
@@ -107,7 +107,7 @@
             Margin="5, -3, 5, 5"
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
-            FontSize="12"
+            FontSize="18"
             TextAlignment="Center" Style="{DynamicResource MyCoolTextBox}"
         />
 
