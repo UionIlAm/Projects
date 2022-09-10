@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Project_02"
         mc:Ignorable="d"
         Title="Создать резюме" Height="472.737" Width="372.737" WindowStartupLocation="CenterScreen">
-    <Grid>
+    <Grid x:Name="SummaryGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -69,7 +69,7 @@
             Grid.Column="0"
             Grid.Row="3"
             Grid.ColumnSpan="7"
-            Content="Возраст"
+            Content="Дата рождения"
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
             FontSize="14"

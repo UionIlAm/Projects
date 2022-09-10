@@ -5,81 +5,99 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_02"
         mc:Ignorable="d"
-        Title="Кадровое агенство" Height="591.632" Width="834.106" WindowStartupLocation="CenterScreen">
+        Title="Кадровое агенство" Height="591.632" Width="1296.106" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="117*"/>
+            <ColumnDefinition Width="125*"/>
+            <ColumnDefinition Width="121*"/>
+            <ColumnDefinition Width="121*"/>
+            <ColumnDefinition Width="121*"/>
+            <ColumnDefinition Width="121*"/>
+            <ColumnDefinition Width="121*"/>
+            <ColumnDefinition Width="121*"/>
+            <ColumnDefinition Width="125*"/>
+            <ColumnDefinition Width="117*"/>
+
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="37*" />
-            <RowDefinition Height="76*" />
-            <RowDefinition Height="56*" />
-            <RowDefinition Height="56*" />
-            <RowDefinition Height="57*" />
-            <RowDefinition Height="36*" />
-            <RowDefinition Height="76*" />
-            <RowDefinition Height="56*" />
-            <RowDefinition Height="56*" />
-            <RowDefinition Height="30*" />
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition/>
+            <RowDefinition Height="0.7*"/>
         </Grid.RowDefinitions>
 
         <Label
-            Grid.Column="0"
+            Grid.Column="1"
             Grid.Row="0"
-            Grid.ColumnSpan="7"
+            Grid.ColumnSpan="4"
             Content="Вакансии"
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
-            FontSize="22"
+            FontSize="22" Margin="2" Grid.RowSpan="1"
         />
 
         <Label
-            Grid.Column="0"
-            Grid.Row="5"
-            Grid.ColumnSpan="7"
+            Grid.Column="5"
+            Grid.Row="0"
+            Grid.ColumnSpan="4"
             Content="Резюме"
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
-            FontSize="22"
+            FontSize="22" Margin="2" Grid.RowSpan="1"
         />
 
-        <ListView x:Name="LvVacancies" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="6" Grid.RowSpan="3" Margin="2">
+        <ListView x:Name="LvVacancies" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="8" Margin="2" SelectionChanged="LvVacancies_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Организация" Width="200" DisplayMemberBinding="{Binding Organization}"/>
-                    <GridViewColumn Header="Зарплата" Width="150" DisplayMemberBinding="{Binding Salary}"/>
-                    <GridViewColumn Header="Должность/Профессия" Width="200" DisplayMemberBinding="{Binding Profession}"/>
-                    <GridViewColumn Header="Стаж работы" Width="135" DisplayMemberBinding="{Binding WorkExperience}"/>
+                    <GridViewColumn Header="Организация" Width="180" DisplayMemberBinding="{Binding Organization}"/>
+                    <GridViewColumn Header="Зарплата р." Width="100" DisplayMemberBinding="{Binding Salary}"/>
+                    <GridViewColumn Header="Должность/Профессия" Width="150" DisplayMemberBinding="{Binding Profession}"/>
+                    <GridViewColumn Header="Стаж работы" Width="80" DisplayMemberBinding="{Binding WorkExperience}"/>
                 </GridView>
             </ListView.View>
         </ListView>
 
-        <Button x:Name="AddVacancy" Content="Добавить вакансию" Grid.Column="0" Grid.Row="1" Margin="2" Style="{DynamicResource MyCoolButton}" Click="AddVacancy_Click"/>
-        <Button x:Name="Respond" Content="Откликнуться" Grid.Column="0" Grid.Row="2" Margin="2" Style="{DynamicResource MyCoolButton}" Click="Respond_Click" IsEnabled="False"/>
-        <Button x:Name="DelVacancy" Content="Удалить вакансию" Grid.Column="0" Grid.Row="3" Margin="2" Style="{DynamicResource MyCoolButton}" Click="DelVacancy_Click" IsEnabled="False"/>
+        <Button x:Name="AddVacancy" Content="Добавить вакансию" Grid.Column="0" Grid.Row="3" Margin="2" Style="{DynamicResource MyCoolButton}" Click="AddVacancy_Click"/>
+        <Button x:Name="Respond" Content="Откликнуться" Grid.Column="0" Grid.Row="5" Margin="2" Style="{DynamicResource MyCoolButton}" Click="Respond_Click" IsEnabled="False"/>
+        <Button x:Name="DelVacancy" Content="Удалить вакансию" Grid.Column="0" Grid.Row="7" Margin="2" Style="{DynamicResource MyCoolButton}" Click="DelVacancy_Click" IsEnabled="False"/>
 
-        <ListView x:Name="LvSummary" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="6" Grid.RowSpan="3" Margin="2" SelectionChanged="LvSummary_SelectionChanged">
+        <ListView x:Name="LvSummary" Grid.Column="5" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="8" Margin="2" SelectionChanged="LvSummary_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ФИО" Width="200" DisplayMemberBinding="{Binding FullName}"/>
-                    <GridViewColumn Header="Возраст" Width="150" DisplayMemberBinding="{Binding Age}"/>
-                    <GridViewColumn Header="Должность/Профессия" Width="200" DisplayMemberBinding="{Binding Profession}"/>
-                    <GridViewColumn Header="Стаж работы" Width="135" DisplayMemberBinding="{Binding WorkExperience}"/>
+                    <GridViewColumn Header="ФИО" Width="180" DisplayMemberBinding="{Binding FullName}"/>
+                    <GridViewColumn Header="Дата рождения" Width="100" DisplayMemberBinding="{Binding Age}"/>
+                    <GridViewColumn Header="Должность/Профессия" Width="150" DisplayMemberBinding="{Binding Profession}"/>
+                    <GridViewColumn Header="Стаж работы" Width="80" DisplayMemberBinding="{Binding WorkExperience}"/>
                 </GridView>
             </ListView.View>
         </ListView>
 
-        <Button x:Name="AddSummary" Content="Добавить резюме" Grid.Column="0" Grid.Row="6" Margin="2" Style="{DynamicResource MyCoolButton}" Click="AddSummary_Click"/>
-        <Button x:Name="Recruit" Content="Принять на работу" Grid.Column="0" Grid.Row="7" Margin="2" Style="{DynamicResource MyCoolButton}" Click="Recruit_Click" IsEnabled="False"/>
-        <Button x:Name="DelSummary" Content="Удалить резюме" Grid.Column="0" Grid.Row="8" Margin="2" Style="{DynamicResource MyCoolButton}" Click="DelSummary_Click" IsEnabled="False"/>
+        <Button x:Name="AddSummary" Content="Добавить резюме" Grid.Column="10" Grid.Row="3" Margin="2" Style="{DynamicResource MyCoolButton}" Click="AddSummary_Click"/>
+        <Button x:Name="Recruit" Content="Принять на работу" Grid.Column="10" Grid.Row="5" Margin="2" Style="{DynamicResource MyCoolButton}" Click="Recruit_Click" IsEnabled="False"/>
+        <Button x:Name="DelSummary" Content="Удалить резюме" Grid.Column="10" Grid.Row="7" Margin="2" Style="{DynamicResource MyCoolButton}" Click="DelSummary_Click" IsEnabled="False"/>
+      
+        <Button x:Name="SummaryGuide" Content="Справка" Grid.Column="10" Grid.Row="9" Margin="2" Style="{DynamicResource MyCoolButton}" Click="SummaryGuide_Click"/>
+        
+        <Button x:Name="VacancyGuide" Content="Справка" Grid.Column="0" Grid.Row="9" Margin="2" Style="{DynamicResource MyCoolButton}" Click="VacancyGuide_Click"/>
 
+        <Label
+            x:Name="InfoLabel"
+            Grid.Column="1"
+            Grid.Row="9"
+            Grid.ColumnSpan="8"
+            Content=""
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            FontSize="16" Margin="2" Grid.RowSpan="1"
+        />
 
     </Grid>
 </Window>

@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-
+using System.Windows.Controls;
 
 namespace Project_02
 {
@@ -15,6 +15,16 @@ namespace Project_02
 
         private void SaveSummary_Click(object sender, RoutedEventArgs e)
         {
+            foreach (UIElement element in SummaryGrid.Children)
+            {
+                if (element is TextBox)
+                {
+                    if (string.IsNullOrWhiteSpace(((TextBox)element).Text))
+                    {
+                        ((TextBox)element).Text = "Не указано";
+                    }
+                }
+            }
             SummaryHelper.CreateSummary(FullNameTB.Text, AgeTB.Text, ProfessionTB.Text, WorkExpTB.Text);
             this.Close();
         }

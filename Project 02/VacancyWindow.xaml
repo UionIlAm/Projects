@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Project_02"
         mc:Ignorable="d"
         Title="Создать вакансию" Height="472.737" Width="372.737" WindowStartupLocation="CenterScreen">
-    <Grid>
+    <Grid x:Name="VacancyGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
