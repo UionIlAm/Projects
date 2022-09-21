@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-D:\Repository\Project 04\obj\Debug\
+D:\Repository\Project 04\obj\Release\
 Project_04
 none
 false
-DEBUG;TRACE
+TRACE
 D:\Repository\Project 04\App.xaml
 4-1534991701
 2-967514586
-211886857523
+20-1653539989
 19279443156
 DeathPeoplePage.xaml;MainWindow.xaml;NewbornPeoplePage.xaml;ResultPage.xaml;
 

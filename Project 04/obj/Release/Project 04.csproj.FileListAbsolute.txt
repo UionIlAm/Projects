@@ -1,0 +1,29 @@
+D:\Repository\Project 04\bin\Release\Project 04.exe.config
+D:\Repository\Project 04\bin\Release\Project 04.exe
+D:\Repository\Project 04\bin\Release\Project 04.pdb
+D:\Repository\Project 04\bin\Release\EntityFramework.dll
+D:\Repository\Project 04\bin\Release\EntityFramework.SqlServer.dll
+D:\Repository\Project 04\bin\Release\EntityFramework.xml
+D:\Repository\Project 04\bin\Release\EntityFramework.SqlServer.xml
+D:\Repository\Project 04\bin\Release\ru\EntityFramework.resources.dll
+D:\Repository\Project 04\obj\Release\Project 04.csproj.AssemblyReference.cache
+D:\Repository\Project 04\obj\Release\DeathPeoplePage.g.cs
+D:\Repository\Project 04\obj\Release\MainWindow.g.cs
+D:\Repository\Project 04\obj\Release\NewbornPeoplePage.g.cs
+D:\Repository\Project 04\obj\Release\ResultPage.g.cs
+D:\Repository\Project 04\obj\Release\App.g.cs
+D:\Repository\Project 04\obj\Release\Project 04_Content.g.cs
+D:\Repository\Project 04\obj\Release\Project 04_MarkupCompile.cache
+D:\Repository\Project 04\obj\Release\Project 04_MarkupCompile.lref
+D:\Repository\Project 04\obj\Release\App.baml
+D:\Repository\Project 04\obj\Release\DeathPeoplePage.baml
+D:\Repository\Project 04\obj\Release\MainWindow.baml
+D:\Repository\Project 04\obj\Release\NewbornPeoplePage.baml
+D:\Repository\Project 04\obj\Release\ResultPage.baml
+D:\Repository\Project 04\obj\Release\Project 04.g.resources
+D:\Repository\Project 04\obj\Release\Project_04.Properties.Resources.resources
+D:\Repository\Project 04\obj\Release\Project 04.csproj.GenerateResource.cache
+D:\Repository\Project 04\obj\Release\Project 04.csproj.CoreCompileInputs.cache
+D:\Repository\Project 04\obj\Release\Project 04.csproj.CopyComplete
+D:\Repository\Project 04\obj\Release\Project 04.exe
+D:\Repository\Project 04\obj\Release\Project 04.pdb
