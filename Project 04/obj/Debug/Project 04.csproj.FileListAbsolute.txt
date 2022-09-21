@@ -26,3 +26,7 @@ D:\Repository\Project 04\obj\Debug\NewbornPeoplePage.g.cs
 D:\Repository\Project 04\obj\Debug\NewbornPeoplePage.baml
 D:\Repository\Project 04\obj\Debug\ResultPage.g.cs
 D:\Repository\Project 04\obj\Debug\ResultPage.baml
+D:\Repository\Project 04\obj\Debug\AddNewboenWindow.g.cs
+D:\Repository\Project 04\obj\Debug\AddNewboenWindow.baml
+D:\Repository\Project 04\obj\Debug\AddDeathPersonWindow.g.cs
+D:\Repository\Project 04\obj\Debug\AddDeathPersonWindow.baml

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_04"
         mc:Ignorable="d"
-        Title="Демография" Height="512" Width="1030" WindowStartupLocation="CenterScreen">
+        Title="Здравствуйте!" Height="512" Width="1030" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -26,13 +26,17 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <Grid Background="SeaShell" Grid.ColumnSpan="5" Grid.RowSpan="8"/>
         <Label Content="Демография" FontSize="20" Grid.Column="0" Grid.ColumnSpan="5"/>
 
         <Frame NavigationUIVisibility="Hidden" x:Name="MainWindowFrame" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="1" Grid.RowSpan="6" Margin="5"/>
 
-        <Button x:Name="GetResult" Content="Страница отчета" Grid.Column="4" Grid.Row="7" Margin="5" Click="GetResult_Click"/>
+        <Button x:Name="GetResult" Content="Страница отчета" Grid.Column="4" Grid.Row="7" Margin="5" Click="GetResult_Click" FontSize="14"/>
 
-        <ComboBox x:Name="ListControlCB" Grid.Column="0" Grid.Row="7" Margin="5" SelectionChanged="ListControlCB_SelectionChanged"/>
+        <ComboBox x:Name="ListControlCB" Grid.Column="0" Grid.Row="7" Margin="5" SelectionChanged="ListControlCB_SelectionChanged" FontSize="14"/>
+
+        <Button x:Name="AddNeborn" Content="Добавить новорожденного" Grid.Column="1" Grid.Row="7" Margin="5" FontSize="14" Click="AddNeborn_Click"/>
+        <Button x:Name="AddDeathPerson" Content="Добавить умершего" Grid.Column="2" Grid.Row="7" Margin="5" FontSize="14" Click="AddDeathPerson_Click"/>
 
     </Grid>
 </Window>

@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="DemographyBaseModel.DeathPeople" Width="1.5" PointX="0.875" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DemographyBaseModel.GenderType" Width="1.5" PointX="4.375" PointY="1.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DemographyBaseModel.NewbornPeople" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DemographyBaseModel.sysdiagrams" Width="1.5" PointX="0.625" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemographyBaseModel.sysdiagrams" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="DemographyBaseModel.FK_DeathPeople_CauseOfDeath1" ManuallyRouted="false" />
         <AssociationConnector Association="DemographyBaseModel.FK_DeathPeople_CountryInfo" ManuallyRouted="false" />
         <AssociationConnector Association="DemographyBaseModel.FK_DeathPeople_CountryInfo1" ManuallyRouted="false" />

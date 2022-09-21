@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Project_04
 {
@@ -32,8 +20,6 @@ namespace Project_04
             ListControlCB.Items.Add("Умершие");
 
             ListControlCB.SelectedIndex = 0;
-
-            
         }
 
         private void ListControlCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -54,7 +40,25 @@ namespace Project_04
 
         private void GetResult_Click(object sender, RoutedEventArgs e)
         {
+            ListControlCB.SelectedIndex = 0;
+
             FrameManager.CurrentFrame.Navigate(new ResultPage());
+        }
+
+        private void AddNeborn_Click(object sender, RoutedEventArgs e)
+        {
+            ListControlCB.SelectedIndex = 0;
+
+            AddNewboenWindow addNewboenWindow = new AddNewboenWindow();
+            addNewboenWindow.ShowDialog();
+        }
+
+        private void AddDeathPerson_Click(object sender, RoutedEventArgs e)
+        {
+            ListControlCB.SelectedIndex = 0;
+
+            AddDeathPersonWindow addDeathPersonWindow = new AddDeathPersonWindow();
+            addDeathPersonWindow.ShowDialog();
         }
     }
 }

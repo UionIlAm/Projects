@@ -15,8 +15,13 @@ namespace Project_04
     
     public partial class DemographyBaseEntities : DbContext
     {
-        private static DemographyBaseEntities _context;
+        private static DemographyBaseEntities _context { get; set; }
 
+        public DemographyBaseEntities()
+            : base("name=DemographyBaseEntities")
+        {
+        }
+    
         public static DemographyBaseEntities GetContext()
         {
             if (_context == null)
@@ -24,11 +29,7 @@ namespace Project_04
 
             return _context;
         }
-        public DemographyBaseEntities()
-            : base("name=DemographyBaseEntities")
-        {
-        }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

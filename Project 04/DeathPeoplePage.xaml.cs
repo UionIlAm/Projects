@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Project_04
 {
@@ -22,18 +12,23 @@ namespace Project_04
     {
         public DeathPeoplePage()
         {
-
             InitializeComponent();
 
-            Init();
+            InitComboBoxes();
 
             FullClear();
-
-            DGridDemography.ItemsSource = DemographyBaseEntities.GetContext().DeathPeople.ToList();
-
         }
 
-        private void Init()
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                DemographyBaseEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                DGridDemography.ItemsSource = DemographyBaseEntities.GetContext().DeathPeople.ToList();
+            }
+        }
+
+        private void InitComboBoxes()
         {
             //var i = DemographyBaseEntities.GetContext().DeathPeople.ToList();
 
@@ -199,6 +194,34 @@ namespace Project_04
                 GroupingByAgeCB.IsEnabled = false;
             }
             
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            var peopleForRemoving = DGridDemography.SelectedItems.Cast<DeathPeople>().ToList();
+
+            if (peopleForRemoving.Count == 0)
+            {
+                MessageBox.Show("Чтобы удалить элемент - выделите их в таблице.", "Подсказка");
+                return;
+            }
+
+            if (MessageBox.Show($"Вы уверены, что хотите удалить слудующие {peopleForRemoving.Count} элементов?", "Предупреждение",
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    DemographyBaseEntities.GetContext().DeathPeople.RemoveRange(peopleForRemoving);
+                    DemographyBaseEntities.GetContext().SaveChanges();
+
+                    DGridDemography.ItemsSource = DemographyBaseEntities.GetContext().DeathPeople.ToList();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }
