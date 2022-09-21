@@ -1,0 +1,448 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище DemographyBaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CauseOfDeath">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CauseOfDeath" Type="nvarchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CountryInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlaceOfBirth" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeathPeople">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="70" />
+          <Property Name="Gender" Type="int" Nullable="false" />
+          <Property Name="Birthday" Type="date" Nullable="false" />
+          <Property Name="PlaceOfBirthID" Type="int" Nullable="false" />
+          <Property Name="Deathday" Type="date" Nullable="false" />
+          <Property Name="PlaceOfDeathId" Type="int" Nullable="false" />
+          <Property Name="CauseOfDeathId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GenderType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewbornPeople">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="70" />
+          <Property Name="GenderId" Type="int" Nullable="false" />
+          <Property Name="BirthdayDate" Type="date" Nullable="false" />
+          <Property Name="PlaceOfBirthId" Type="int" Nullable="false" />
+          <Property Name="MotherInfo" Type="nvarchar" MaxLength="150" />
+          <Property Name="FatherInfo" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_DeathPeople_CauseOfDeath1">
+          <End Role="CauseOfDeath" Type="Self.CauseOfDeath" Multiplicity="1" />
+          <End Role="DeathPeople" Type="Self.DeathPeople" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CauseOfDeath">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeathPeople">
+              <PropertyRef Name="CauseOfDeathId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeathPeople_CountryInfo">
+          <End Role="CountryInfo" Type="Self.CountryInfo" Multiplicity="1" />
+          <End Role="DeathPeople" Type="Self.DeathPeople" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeathPeople">
+              <PropertyRef Name="PlaceOfBirthID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeathPeople_CountryInfo1">
+          <End Role="CountryInfo" Type="Self.CountryInfo" Multiplicity="1" />
+          <End Role="DeathPeople" Type="Self.DeathPeople" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeathPeople">
+              <PropertyRef Name="PlaceOfDeathId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeathPeople_GenderType">
+          <End Role="GenderType" Type="Self.GenderType" Multiplicity="1" />
+          <End Role="DeathPeople" Type="Self.DeathPeople" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GenderType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeathPeople">
+              <PropertyRef Name="Gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NewbornPeople_CountryInfo">
+          <End Role="CountryInfo" Type="Self.CountryInfo" Multiplicity="1" />
+          <End Role="NewbornPeople" Type="Self.NewbornPeople" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NewbornPeople">
+              <PropertyRef Name="PlaceOfBirthId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NewbornPeople_GenderType">
+          <End Role="GenderType" Type="Self.GenderType" Multiplicity="1" />
+          <End Role="NewbornPeople" Type="Self.NewbornPeople" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GenderType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NewbornPeople">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище DemographyBaseModelContainer">
+          <EntitySet Name="CauseOfDeath" EntityType="Self.CauseOfDeath" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CountryInfo" EntityType="Self.CountryInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeathPeople" EntityType="Self.DeathPeople" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GenderType" EntityType="Self.GenderType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewbornPeople" EntityType="Self.NewbornPeople" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DeathPeople_CauseOfDeath1" Association="Self.FK_DeathPeople_CauseOfDeath1">
+            <End Role="CauseOfDeath" EntitySet="CauseOfDeath" />
+            <End Role="DeathPeople" EntitySet="DeathPeople" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeathPeople_CountryInfo" Association="Self.FK_DeathPeople_CountryInfo">
+            <End Role="CountryInfo" EntitySet="CountryInfo" />
+            <End Role="DeathPeople" EntitySet="DeathPeople" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeathPeople_CountryInfo1" Association="Self.FK_DeathPeople_CountryInfo1">
+            <End Role="CountryInfo" EntitySet="CountryInfo" />
+            <End Role="DeathPeople" EntitySet="DeathPeople" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeathPeople_GenderType" Association="Self.FK_DeathPeople_GenderType">
+            <End Role="GenderType" EntitySet="GenderType" />
+            <End Role="DeathPeople" EntitySet="DeathPeople" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewbornPeople_CountryInfo" Association="Self.FK_NewbornPeople_CountryInfo">
+            <End Role="CountryInfo" EntitySet="CountryInfo" />
+            <End Role="NewbornPeople" EntitySet="NewbornPeople" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewbornPeople_GenderType" Association="Self.FK_NewbornPeople_GenderType">
+            <End Role="GenderType" EntitySet="GenderType" />
+            <End Role="NewbornPeople" EntitySet="NewbornPeople" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DemographyBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CauseOfDeath">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CauseOfDeath1" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DeathPeople" Relationship="Self.FK_DeathPeople_CauseOfDeath1" FromRole="CauseOfDeath" ToRole="DeathPeople" />
+        </EntityType>
+        <EntityType Name="CountryInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlaceOfBirth" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DeathPeople" Relationship="Self.FK_DeathPeople_CountryInfo" FromRole="CountryInfo" ToRole="DeathPeople" />
+          <NavigationProperty Name="DeathPeople1" Relationship="Self.FK_DeathPeople_CountryInfo1" FromRole="CountryInfo" ToRole="DeathPeople" />
+          <NavigationProperty Name="NewbornPeople" Relationship="Self.FK_NewbornPeople_CountryInfo" FromRole="CountryInfo" ToRole="NewbornPeople" />
+        </EntityType>
+        <EntityType Name="DeathPeople">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Int32" Nullable="false" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PlaceOfBirthID" Type="Int32" Nullable="false" />
+          <Property Name="Deathday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PlaceOfDeathId" Type="Int32" Nullable="false" />
+          <Property Name="CauseOfDeathId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CauseOfDeath" Relationship="Self.FK_DeathPeople_CauseOfDeath1" FromRole="DeathPeople" ToRole="CauseOfDeath" />
+          <NavigationProperty Name="CountryInfo" Relationship="Self.FK_DeathPeople_CountryInfo" FromRole="DeathPeople" ToRole="CountryInfo" />
+          <NavigationProperty Name="CountryInfo1" Relationship="Self.FK_DeathPeople_CountryInfo1" FromRole="DeathPeople" ToRole="CountryInfo" />
+          <NavigationProperty Name="GenderType" Relationship="Self.FK_DeathPeople_GenderType" FromRole="DeathPeople" ToRole="GenderType" />
+        </EntityType>
+        <EntityType Name="GenderType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gender" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DeathPeople" Relationship="Self.FK_DeathPeople_GenderType" FromRole="GenderType" ToRole="DeathPeople" />
+          <NavigationProperty Name="NewbornPeople" Relationship="Self.FK_NewbornPeople_GenderType" FromRole="GenderType" ToRole="NewbornPeople" />
+        </EntityType>
+        <EntityType Name="NewbornPeople">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="GenderId" Type="Int32" Nullable="false" />
+          <Property Name="BirthdayDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PlaceOfBirthId" Type="Int32" Nullable="false" />
+          <Property Name="MotherInfo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FatherInfo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CountryInfo" Relationship="Self.FK_NewbornPeople_CountryInfo" FromRole="NewbornPeople" ToRole="CountryInfo" />
+          <NavigationProperty Name="GenderType" Relationship="Self.FK_NewbornPeople_GenderType" FromRole="NewbornPeople" ToRole="GenderType" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_DeathPeople_CauseOfDeath1">
+          <End Role="CauseOfDeath" Type="Self.CauseOfDeath" Multiplicity="1" />
+          <End Role="DeathPeople" Type="Self.DeathPeople" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CauseOfDeath">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeathPeople">
+              <PropertyRef Name="CauseOfDeathId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeathPeople_CountryInfo">
+          <End Role="CountryInfo" Type="Self.CountryInfo" Multiplicity="1" />
+          <End Role="DeathPeople" Type="Self.DeathPeople" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeathPeople">
+              <PropertyRef Name="PlaceOfBirthID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeathPeople_CountryInfo1">
+          <End Role="CountryInfo" Type="Self.CountryInfo" Multiplicity="1" />
+          <End Role="DeathPeople" Type="Self.DeathPeople" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeathPeople">
+              <PropertyRef Name="PlaceOfDeathId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NewbornPeople_CountryInfo">
+          <End Role="CountryInfo" Type="Self.CountryInfo" Multiplicity="1" />
+          <End Role="NewbornPeople" Type="Self.NewbornPeople" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NewbornPeople">
+              <PropertyRef Name="PlaceOfBirthId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeathPeople_GenderType">
+          <End Role="GenderType" Type="Self.GenderType" Multiplicity="1" />
+          <End Role="DeathPeople" Type="Self.DeathPeople" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GenderType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeathPeople">
+              <PropertyRef Name="Gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NewbornPeople_GenderType">
+          <End Role="GenderType" Type="Self.GenderType" Multiplicity="1" />
+          <End Role="NewbornPeople" Type="Self.NewbornPeople" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GenderType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NewbornPeople">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DemographyBaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CauseOfDeath" EntityType="Self.CauseOfDeath" />
+          <EntitySet Name="CountryInfo" EntityType="Self.CountryInfo" />
+          <EntitySet Name="DeathPeople" EntityType="Self.DeathPeople" />
+          <EntitySet Name="GenderType" EntityType="Self.GenderType" />
+          <EntitySet Name="NewbornPeople" EntityType="Self.NewbornPeople" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_DeathPeople_CauseOfDeath1" Association="Self.FK_DeathPeople_CauseOfDeath1">
+            <End Role="CauseOfDeath" EntitySet="CauseOfDeath" />
+            <End Role="DeathPeople" EntitySet="DeathPeople" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeathPeople_CountryInfo" Association="Self.FK_DeathPeople_CountryInfo">
+            <End Role="CountryInfo" EntitySet="CountryInfo" />
+            <End Role="DeathPeople" EntitySet="DeathPeople" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeathPeople_CountryInfo1" Association="Self.FK_DeathPeople_CountryInfo1">
+            <End Role="CountryInfo" EntitySet="CountryInfo" />
+            <End Role="DeathPeople" EntitySet="DeathPeople" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewbornPeople_CountryInfo" Association="Self.FK_NewbornPeople_CountryInfo">
+            <End Role="CountryInfo" EntitySet="CountryInfo" />
+            <End Role="NewbornPeople" EntitySet="NewbornPeople" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeathPeople_GenderType" Association="Self.FK_DeathPeople_GenderType">
+            <End Role="GenderType" EntitySet="GenderType" />
+            <End Role="DeathPeople" EntitySet="DeathPeople" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewbornPeople_GenderType" Association="Self.FK_NewbornPeople_GenderType">
+            <End Role="GenderType" EntitySet="GenderType" />
+            <End Role="NewbornPeople" EntitySet="NewbornPeople" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DemographyBaseModelContainer" CdmEntityContainer="DemographyBaseEntities">
+          <EntitySetMapping Name="CauseOfDeath">
+            <EntityTypeMapping TypeName="DemographyBaseModel.CauseOfDeath">
+              <MappingFragment StoreEntitySet="CauseOfDeath">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CauseOfDeath1" ColumnName="CauseOfDeath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CountryInfo">
+            <EntityTypeMapping TypeName="DemographyBaseModel.CountryInfo">
+              <MappingFragment StoreEntitySet="CountryInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PlaceOfBirth" ColumnName="PlaceOfBirth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeathPeople">
+            <EntityTypeMapping TypeName="DemographyBaseModel.DeathPeople">
+              <MappingFragment StoreEntitySet="DeathPeople">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="PlaceOfBirthID" ColumnName="PlaceOfBirthID" />
+                <ScalarProperty Name="Deathday" ColumnName="Deathday" />
+                <ScalarProperty Name="PlaceOfDeathId" ColumnName="PlaceOfDeathId" />
+                <ScalarProperty Name="CauseOfDeathId" ColumnName="CauseOfDeathId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GenderType">
+            <EntityTypeMapping TypeName="DemographyBaseModel.GenderType">
+              <MappingFragment StoreEntitySet="GenderType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewbornPeople">
+            <EntityTypeMapping TypeName="DemographyBaseModel.NewbornPeople">
+              <MappingFragment StoreEntitySet="NewbornPeople">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="BirthdayDate" ColumnName="BirthdayDate" />
+                <ScalarProperty Name="PlaceOfBirthId" ColumnName="PlaceOfBirthId" />
+                <ScalarProperty Name="MotherInfo" ColumnName="MotherInfo" />
+                <ScalarProperty Name="FatherInfo" ColumnName="FatherInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DemographyBaseModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

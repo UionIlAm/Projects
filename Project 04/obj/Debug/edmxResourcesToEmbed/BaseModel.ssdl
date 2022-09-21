@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище DemographyBaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CauseOfDeath">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CauseOfDeath" Type="nvarchar" MaxLength="300" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CountryInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlaceOfBirth" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DeathPeople">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="Patronymic" Type="nvarchar" MaxLength="70" />
+    <Property Name="Gender" Type="int" Nullable="false" />
+    <Property Name="Birthday" Type="date" Nullable="false" />
+    <Property Name="PlaceOfBirthID" Type="int" Nullable="false" />
+    <Property Name="Deathday" Type="date" Nullable="false" />
+    <Property Name="PlaceOfDeathId" Type="int" Nullable="false" />
+    <Property Name="CauseOfDeathId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GenderType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NewbornPeople">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="Patronymic" Type="nvarchar" MaxLength="70" />
+    <Property Name="GenderId" Type="int" Nullable="false" />
+    <Property Name="BirthdayDate" Type="date" Nullable="false" />
+    <Property Name="PlaceOfBirthId" Type="int" Nullable="false" />
+    <Property Name="MotherInfo" Type="nvarchar" MaxLength="150" />
+    <Property Name="FatherInfo" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_DeathPeople_CauseOfDeath1">
+    <End Role="CauseOfDeath" Type="Self.CauseOfDeath" Multiplicity="1" />
+    <End Role="DeathPeople" Type="Self.DeathPeople" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CauseOfDeath">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DeathPeople">
+        <PropertyRef Name="CauseOfDeathId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeathPeople_CountryInfo">
+    <End Role="CountryInfo" Type="Self.CountryInfo" Multiplicity="1" />
+    <End Role="DeathPeople" Type="Self.DeathPeople" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountryInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DeathPeople">
+        <PropertyRef Name="PlaceOfBirthID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeathPeople_CountryInfo1">
+    <End Role="CountryInfo" Type="Self.CountryInfo" Multiplicity="1" />
+    <End Role="DeathPeople" Type="Self.DeathPeople" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountryInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DeathPeople">
+        <PropertyRef Name="PlaceOfDeathId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeathPeople_GenderType">
+    <End Role="GenderType" Type="Self.GenderType" Multiplicity="1" />
+    <End Role="DeathPeople" Type="Self.DeathPeople" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GenderType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DeathPeople">
+        <PropertyRef Name="Gender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NewbornPeople_CountryInfo">
+    <End Role="CountryInfo" Type="Self.CountryInfo" Multiplicity="1" />
+    <End Role="NewbornPeople" Type="Self.NewbornPeople" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountryInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NewbornPeople">
+        <PropertyRef Name="PlaceOfBirthId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NewbornPeople_GenderType">
+    <End Role="GenderType" Type="Self.GenderType" Multiplicity="1" />
+    <End Role="NewbornPeople" Type="Self.NewbornPeople" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GenderType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NewbornPeople">
+        <PropertyRef Name="GenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище DemographyBaseModelContainer">
+    <EntitySet Name="CauseOfDeath" EntityType="Self.CauseOfDeath" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CountryInfo" EntityType="Self.CountryInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DeathPeople" EntityType="Self.DeathPeople" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GenderType" EntityType="Self.GenderType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NewbornPeople" EntityType="Self.NewbornPeople" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_DeathPeople_CauseOfDeath1" Association="Self.FK_DeathPeople_CauseOfDeath1">
+      <End Role="CauseOfDeath" EntitySet="CauseOfDeath" />
+      <End Role="DeathPeople" EntitySet="DeathPeople" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeathPeople_CountryInfo" Association="Self.FK_DeathPeople_CountryInfo">
+      <End Role="CountryInfo" EntitySet="CountryInfo" />
+      <End Role="DeathPeople" EntitySet="DeathPeople" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeathPeople_CountryInfo1" Association="Self.FK_DeathPeople_CountryInfo1">
+      <End Role="CountryInfo" EntitySet="CountryInfo" />
+      <End Role="DeathPeople" EntitySet="DeathPeople" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeathPeople_GenderType" Association="Self.FK_DeathPeople_GenderType">
+      <End Role="GenderType" EntitySet="GenderType" />
+      <End Role="DeathPeople" EntitySet="DeathPeople" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NewbornPeople_CountryInfo" Association="Self.FK_NewbornPeople_CountryInfo">
+      <End Role="CountryInfo" EntitySet="CountryInfo" />
+      <End Role="NewbornPeople" EntitySet="NewbornPeople" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NewbornPeople_GenderType" Association="Self.FK_NewbornPeople_GenderType">
+      <End Role="GenderType" EntitySet="GenderType" />
+      <End Role="NewbornPeople" EntitySet="NewbornPeople" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

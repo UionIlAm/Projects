@@ -1,0 +1,46 @@
+﻿<Page x:Class="Project_04.DeathPeoplePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Project_04"
+      mc:Ignorable="d" 
+     d:DesignHeight="352" d:DesignWidth="1014.4"
+      Title="MainPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="19*"/>
+        </Grid.RowDefinitions>
+
+        <ComboBox x:Name="GroupingByGenderCB" Grid.Column="2" Grid.Row="0" Margin="10,2,10,2" SelectionChanged="GroupingByGenderCB_SelectionChanged"/>
+        <ComboBox x:Name="GroupingByAgeCB" Grid.Column="3" Grid.Row="0" Margin="10,2,10,2" SelectionChanged="GroupingByAgeCB_SelectionChanged"/>
+        <ComboBox x:Name="GroupingByCauseOfDeathCB" Grid.Column="4" Grid.Row="0" Margin="10,2,10,2" SelectionChanged="GroupingByCauseOfDeathCB_SelectionChanged"/>
+        
+        <Button x:Name="Reset" Content="Сбросить" Grid.Column="0" Grid.Row="0" Margin="10,2,10,2" Click="Reset_Click"/>
+
+        <DataGrid x:Name="DGridDemography" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Margin="2" HorizontalContentAlignment="Center" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Name}" Width="100"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}" Width="100"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic}" Width="100"/>
+                <DataGridTextColumn Header="Пол" Binding="{Binding GenderType.Gender}" Width="70"/>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding Birthday}" Width="95"/>
+                <DataGridTextColumn Header="Место рождения" Binding="{Binding CountryInfo.PlaceOfBirth}" Width="150"/>
+                <DataGridTextColumn Header="Дата смерти" Binding="{Binding Deathday}" Width="100"/>
+                <DataGridTextColumn Header="Место смерти" Binding="{Binding CountryInfo1.PlaceOfBirth}" Width="150"/>
+                <DataGridTextColumn Header="Причина смерти" Binding="{Binding CauseOfDeath.CauseOfDeath1}" Width="150"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Page>
