@@ -153,10 +153,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="BaseModel.edmx">
+    <Resource Include="BaseModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BaseModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    </Resource>
     <None Include="BaseModel.edmx.diagram">
       <DependentUpon>BaseModel.edmx</DependentUpon>
     </None>
