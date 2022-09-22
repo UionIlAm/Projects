@@ -13,3 +13,10 @@ D:\Repository\Project 06\obj\Debug\Project 06.csproj.GenerateResource.cache
 D:\Repository\Project 06\obj\Debug\Project 06.csproj.CoreCompileInputs.cache
 D:\Repository\Project 06\obj\Debug\Project 06.exe
 D:\Repository\Project 06\obj\Debug\Project 06.pdb
+D:\Repository\Project 06\bin\Debug\LiveCharts.dll
+D:\Repository\Project 06\bin\Debug\LiveCharts.Wpf.dll
+D:\Repository\Project 06\bin\Debug\LiveCharts.pdb
+D:\Repository\Project 06\bin\Debug\LiveCharts.xml
+D:\Repository\Project 06\bin\Debug\LiveCharts.Wpf.pdb
+D:\Repository\Project 06\bin\Debug\LiveCharts.Wpf.xml
+D:\Repository\Project 06\obj\Debug\App.baml
