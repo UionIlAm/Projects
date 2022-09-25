@@ -1,0 +1,12 @@
+C:\Users\Студент.PC7\Desktop\SystemsOfLinearEquationsManager\bin\Debug\SystemsOfLinearEquationsManager.dll
+C:\Users\Студент.PC7\Desktop\SystemsOfLinearEquationsManager\bin\Debug\SystemsOfLinearEquationsManager.pdb
+C:\Users\Студент.PC7\Desktop\SystemsOfLinearEquationsManager\obj\Debug\SystemsOfLinearEquationsManager.csproj.AssemblyReference.cache
+C:\Users\Студент.PC7\Desktop\SystemsOfLinearEquationsManager\obj\Debug\SystemsOfLinearEquationsManager.csproj.CoreCompileInputs.cache
+C:\Users\Студент.PC7\Desktop\SystemsOfLinearEquationsManager\obj\Debug\SystemsOfLinearEquationsManager.dll
+C:\Users\Студент.PC7\Desktop\SystemsOfLinearEquationsManager\obj\Debug\SystemsOfLinearEquationsManager.pdb
+C:\Users\d169\Desktop\Project 03\SystemsOfLinearEquationsManager\bin\Debug\SystemsOfLinearEquationsManager.dll
+C:\Users\d169\Desktop\Project 03\SystemsOfLinearEquationsManager\bin\Debug\SystemsOfLinearEquationsManager.pdb
+C:\Users\d169\Desktop\Project 03\SystemsOfLinearEquationsManager\obj\Debug\SystemsOfLinearEquationsManager.csproj.AssemblyReference.cache
+C:\Users\d169\Desktop\Project 03\SystemsOfLinearEquationsManager\obj\Debug\SystemsOfLinearEquationsManager.csproj.CoreCompileInputs.cache
+C:\Users\d169\Desktop\Project 03\SystemsOfLinearEquationsManager\obj\Debug\SystemsOfLinearEquationsManager.dll
+C:\Users\d169\Desktop\Project 03\SystemsOfLinearEquationsManager\obj\Debug\SystemsOfLinearEquationsManager.pdb
